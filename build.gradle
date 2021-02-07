@@ -1,0 +1,45 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.2'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id 'pmd'
+    id 'com.github.spotbugs' version '4.6.0'
+    id "ca.cutterslade.analyze" version "1.4.2"
+}
+
+group = 'com.avast'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+spotbugs {
+    reportLevel = "low"
+    showStackTraces = true
+    showProgress = true
+}
+
+pmd {
+    consoleOutput = true
+    ruleSets = ["pmd.xml"]
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    permitUnusedDeclared 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'com.fasterxml.jackson.core:jackson-databind'
+    implementation 'com.fasterxml.jackson.core:jackson-core'
+    implementation 'org.slf4j:slf4j-api:1.7.30'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.11.4'
+    implementation 'org.springframework.boot:spring-boot-autoconfigure'
+    implementation 'org.springframework.boot:spring-boot'
+    implementation 'org.springframework:spring-beans'
+    implementation 'org.springframework:spring-context'
+    implementation 'org.springframework:spring-web:'
+}
+
+test {
+    useJUnitPlatform()
+}
